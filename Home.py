@@ -1,3 +1,4 @@
+import json
 import yaml
 import base64
 import streamlit as st
@@ -17,8 +18,9 @@ try:
         config = yaml.load(file, Loader=SafeLoader)
 except FileNotFoundError:
     try:
-        config = st.secrets["login_config"]
-    except (KeyError, AttributeError):
+        cfg = st.secrets["login_config"]
+        config = json.loads(json.dumps(cfg))
+    except (KeyError, AttributeError) as e:
         st.error(
             "Configuration not found. Create `login_config.yml` locally or set "
             "`login_config` in Streamlit Secrets for cloud deployment."

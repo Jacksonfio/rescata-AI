@@ -1,0 +1,17 @@
+tree 62a93a0d184700be8eb67ac512317c1c26815a5e
+parent 27c78cdff4227f9e980d23944dd237ee2f4850cf
+author Gagandeep Singh <gaganmanku96@gmail.com> 1620308082 +0530
+committer GitHub <noreply@github.com> 1620308082 +0530
+gpgsig -----BEGIN PGP SIGNATURE-----
+ 
+ wsBcBAABCAAQBQJgk/ByCRBK7hj4Ov3rIwAAED8IAFQxHEFNkqmva42iRZEQ/Qwv
+ Dsv73KYsHTrXWBqRxbwHJ1c7UsdBte2tJjWsIjmX3SQGAAsh5heL//tZCaJEF272
+ C0ysthzLFfuvAhSDqRTNzlviczZHXo1mit0R1XjrlJi9/DUHB5LN1Z1JYZrC0xnz
+ 7jQpxTZ8zTk/cCisg51WTf3SlpBvwN06rulUCN+/39M0dPGKkV3v30/au9OeqvOf
+ hNNb5Pa4PlCMaujxLNdn/3l8YOR1nLRUS3hlDBvLzcgL2DEeRqwjPjeHb/gISP56
+ yZpxNqvyDfgAEEq1M75/JYthPVBMNffj0A5dBybYxasXSh9Whamn/ZtkldY0vjg=
+ =2PBo
+ -----END PGP SIGNATURE-----
+ 
+
+changes pg_host to localhost

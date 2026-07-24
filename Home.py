@@ -16,8 +16,14 @@ try:
     with open("login_config.yml") as file:
         config = yaml.load(file, Loader=SafeLoader)
 except FileNotFoundError:
-    st.error("Configuration file 'login_config.yml' not found")
-    st.stop()
+    try:
+        config = st.secrets["login_config"]
+    except (KeyError, AttributeError):
+        st.error(
+            "Configuration not found. Create `login_config.yml` locally or set "
+            "`login_config` in Streamlit Secrets for cloud deployment."
+        )
+        st.stop()
 
 authenticator = stauth.Authenticate(
     config["credentials"],

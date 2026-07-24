@@ -18,14 +18,10 @@ try:
         config = yaml.load(file, Loader=SafeLoader)
 except FileNotFoundError:
     try:
-        def _convert(obj):
-            if isinstance(obj, Mapping):
-                return {k: _convert(v) for k, v in obj.items()}
-            elif isinstance(obj, list):
-                return [_convert(v) for v in obj]
-            return obj
-        config = _convert(st.secrets["login_config"])
-    except (KeyError, AttributeError) as e:
+        import json as _json
+        raw = dict(st.secrets["login_config"])
+        config = _json.loads(_json.dumps(raw, default=dict))
+    except Exception as e:
         st.error(
             "Configuration not found. Create `login_config.yml` locally or set "
             "`login_config` in Streamlit Secrets for cloud deployment."

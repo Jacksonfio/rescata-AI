@@ -1,9 +1,9 @@
+import json
 import yaml
 import base64
 import streamlit as st
 from yaml import SafeLoader
 import streamlit_authenticator as stauth
-from streamlit.runtime.secrets import SecretDict
 
 from pages.helper import db_queries
 
@@ -18,13 +18,13 @@ try:
         config = yaml.load(file, Loader=SafeLoader)
 except FileNotFoundError:
     try:
-        def _deep_convert(obj):
+        def _convert(obj):
             if isinstance(obj, dict):
-                return {k: _deep_convert(v) for k, v in obj.items()}
+                return {k: _convert(v) for k, v in obj.items()}
             elif isinstance(obj, list):
-                return [_deep_convert(v) for v in obj]
+                return [_convert(v) for v in obj]
             return obj
-        config = _deep_convert(st.secrets["login_config"])
+        config = _convert(st.secrets["login_config"])
     except (KeyError, AttributeError) as e:
         st.error(
             "Configuration not found. Create `login_config.yml` locally or set "

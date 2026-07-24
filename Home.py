@@ -1,6 +1,6 @@
-import json
 import yaml
 import base64
+from collections.abc import Mapping
 import streamlit as st
 from yaml import SafeLoader
 import streamlit_authenticator as stauth
@@ -19,7 +19,7 @@ try:
 except FileNotFoundError:
     try:
         def _convert(obj):
-            if isinstance(obj, dict):
+            if isinstance(obj, Mapping):
                 return {k: _convert(v) for k, v in obj.items()}
             elif isinstance(obj, list):
                 return [_convert(v) for v in obj]
